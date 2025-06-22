@@ -106,8 +106,8 @@ The project uses several configuration files:
 
 ### 2. Docker Compose for Local Development
 
-*   **`src/main/resources/docker-compose.yml`**:
-    *   This file defines a multi-container Docker environment for local development. It includes services for:
+*   **`docker-compose.yml` (in project root)**:
+    *   This file, now located in the project's root directory, defines a multi-container Docker environment for local development. It includes services for:
         *   `postgres` (PostgreSQL database)
         *   `zookeeper`
         *   `kafka`
@@ -154,10 +154,10 @@ To run the Spring Boot application itself:
     This will start the application. By default, it will try to connect to services (PostgreSQL, Kafka, AWS SNS/SQS) based on the configurations in `src/main/resources/application.yml`.
 
 *   **Setting up Local Services (Optional - for local development without Testcontainers during app run):**
-    If you want to run the application and have it connect to local instances of Kafka, PostgreSQL, etc., you can use the provided `docker-compose.yml`:
-    1.  Navigate to `src/main/resources/`.
+    If you want to run the application and have it connect to local instances of Kafka, PostgreSQL, etc., you can use the `docker-compose.yml` file located in the project root:
+    1.  Ensure you are in the project root directory.
     2.  Run `docker-compose up -d`.
-    This will start Kafka and PostgreSQL as defined in the compose file. The application, when started with `mvn spring-boot:run`, should then be able to connect to these services using the `localhost` addresses configured in `application.yml`.
+    This will start Kafka and PostgreSQL as defined in the compose file. The application, when started with `mvn spring-boot:run`, should then be able to connect to these services using the `localhost` addresses configured in `src/main/resources/application.yml`.
 
 ---
 This project serves as a practical guide and example for implementing robust integration tests with Testcontainers.
